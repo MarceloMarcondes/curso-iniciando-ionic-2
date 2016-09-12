@@ -1,15 +1,25 @@
 import { Component } from '@angular/core';
 import { ionicBootstrap, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
-
 import { HomePage } from './pages/home/home';
-
+import { TestPage } from './pages/test/test';
+import { AlertPage } from './pages/alert/alert';
+import { ButtonTestPage } from './pages/button-test/button-test';
+import { CardTestPage } from './pages/card-test/card-test';
 
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>'
+  templateUrl: 'build/app.html'
 })
 export class MyApp {
-  rootPage: any = HomePage;
+
+home: any = HomePage;
+test: any = TestPage;
+alert: any = AlertPage;
+button: any = ButtonTestPage;
+card: any = CardTestPage;
+
+rootPage: any = this.home;
+
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
@@ -18,6 +28,11 @@ export class MyApp {
       StatusBar.styleDefault();
     });
   }
+
+  openPage(page) {
+    this.rootPage = page;
+  }
+
 }
 
 ionicBootstrap(MyApp);
